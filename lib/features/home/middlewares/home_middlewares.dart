@@ -15,12 +15,12 @@ Stream<dynamic> fetchMovies(Stream<dynamic> actions, EpicStore<AppState> store) 
     return Observable(actions)
         .ofType(new TypeToken<RequestMoviesAction>())
         .flatMap((_) {
-            return _repository.getMovies().map((movieEntities) {
-                List<MovieViewModel> movies = List(movieEntities.length);
+            return _repository.getMoviesByName('batman').map((movieEntities) {
+                List<MovieViewModel> movies = [];
 
                 for (var movieEntity in movieEntities) {
                     var movieViewModel = MovieViewModel();
-                    movieViewModel.name = movieEntity.name;
+                    movieViewModel.name = movieEntity.title;
 
                     movies.add(movieViewModel);
                 }

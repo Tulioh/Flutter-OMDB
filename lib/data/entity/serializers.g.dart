@@ -17,6 +17,13 @@ part of 'serializers.dart';
 // ignore_for_file: sort_constructors_first
 
 Serializers _$serializers = (new Serializers().toBuilder()
-      ..add(BookEntity.serializer)
-      ..add(MovieEntity.serializer))
+      ..add(MovieEntity.serializer)
+      ..add(MovieRatingEntity.serializer)
+      ..add(OmdbSearchResultEntity.serializer)
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(MovieEntity)]),
+          () => new ListBuilder<MovieEntity>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(MovieRatingEntity)]),
+          () => new ListBuilder<MovieRatingEntity>()))
     .build();
