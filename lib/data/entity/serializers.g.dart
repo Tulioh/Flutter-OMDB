@@ -16,5 +16,7 @@ part of 'serializers.dart';
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: sort_constructors_first
 
-Serializers _$serializers =
-    (new Serializers().toBuilder()..add(BookEntity.serializer)).build();
+Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(BookEntity.serializer)
+      ..add(MovieEntity.serializer))
+    .build();
