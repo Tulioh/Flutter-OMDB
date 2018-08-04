@@ -5,14 +5,23 @@ import 'package:redux/redux.dart';
 
 HomeState homeReducer(HomeState state, dynamic action) {
     return new HomeState(
-        _moviesReducer(state.movies, action)
+        _moviesReducers(state.movies, action)
     );
 }
 
-final _moviesReducer = combineReducers<List<MovieViewModel>>([
+final _moviesReducers = combineReducers<List<MovieViewModel>>([
     TypedReducer<List<MovieViewModel>, OnMoviesReceivedAction>(_getMovieViewModels)
 ]);
 
 List<MovieViewModel> _getMovieViewModels(List<MovieViewModel> oldMovies, OnMoviesReceivedAction action) {
-    return action.movies;
+    List<MovieViewModel> movies = [];
+
+    for (var movieEntity in action.movies) {
+        var movieViewModel = MovieViewModel();
+        movieViewModel.name = movieEntity.title;
+        movieViewModel.posterUrl = movieEntity.poster;
+
+        movies.add(movieViewModel);
+    }
+    return movies;
 }

@@ -1,7 +1,7 @@
 import 'package:omdb_movies/features/home/viewmodels/movie_view_model.dart';
 
 class HomeState {
-    List<MovieViewModel> movies;
+    final List<MovieViewModel> movies;
 
     HomeState(this.movies);
 

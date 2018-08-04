@@ -397,7 +397,7 @@ class _$MovieEntity extends MovieEntity {
   bool operator ==(dynamic other) {
     if (identical(other, this)) return true;
     if (other is! MovieEntity) return false;
-    return title == other.title &&
+    return title == other.appBarTitle &&
         year == other.year &&
         type == other.type &&
         poster == other.poster &&

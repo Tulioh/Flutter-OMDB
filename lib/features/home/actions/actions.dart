@@ -1,9 +1,13 @@
-import 'package:omdb_movies/features/home/viewmodels/movie_view_model.dart';
+import 'package:omdb_movies/data/entity/movie_entity.dart';
 
-class RequestMoviesAction {}
+class OnSearchMovieAction {
+    final String movieName;
+
+    OnSearchMovieAction(this.movieName);
+}
 
 class OnMoviesReceivedAction {
-    final List<MovieViewModel> movies;
+    final List<MovieEntity> movies;
 
     OnMoviesReceivedAction(this.movies);
 }
