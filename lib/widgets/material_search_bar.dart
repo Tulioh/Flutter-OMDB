@@ -62,6 +62,7 @@ class _MaterialSearchBarState extends State<MaterialSearchBar>  {
                     controller: _textFieldController,
                     cursorColor: Colors.white,
                     maxLines: 1,
+                    autofocus: true,
                     onChanged: (text) {
                         widget.onTextChanged(text);
                     },
@@ -130,12 +131,4 @@ class _MaterialSearchBarState extends State<MaterialSearchBar>  {
             },
         );
     }
-
-    /*Observable<String> getTextObservable() {
-        return _textFieldObservable
-            .distinct()
-            .where((text) {
-                return text.isNotEmpty && text.length >= 3;
-            }).debounce(Duration(milliseconds: 300));
-    }*/
 }

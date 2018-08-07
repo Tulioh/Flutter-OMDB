@@ -5,7 +5,6 @@ import 'package:redux/redux.dart';
 import 'package:omdb_movies/widgets/material_search_bar.dart';
 import 'package:omdb_movies/app_state.dart';
 import 'package:omdb_movies/features/home/actions/actions.dart';
-import 'package:omdb_movies/features/home/state/home_state.dart';
 import 'package:omdb_movies/features/home/viewmodels/movie_view_model.dart';
 
 class HomeWidget extends StatelessWidget {
@@ -47,15 +46,41 @@ class MovieListWidget extends StatelessWidget {
         List<Widget> movieWidget = [];
 
         for (var movie in movies) {
-            movieWidget.add(GridTile(
-                child: Container(
-                        margin: const EdgeInsets.all(5.0),
-                        child: Image.network(
-                            movie.posterUrl,
-                            width: 100.0,
-                            height: 100.0,
-                            fit: BoxFit.cover
-                        )
+            movieWidget.add(Card(
+                child: Stack(
+                        children: <Widget>[
+                            Container(
+                                constraints: BoxConstraints.expand(
+                                    width: double.infinity,
+                                    height: double.infinity
+                                ),
+                                child: Image.network(
+                                    movie.posterUrl,
+                                    width: 100.0,
+                                    height: 100.0,
+                                    fit: BoxFit.cover
+                                ),
+                            ),
+                            Container(
+                                alignment: AlignmentDirectional.topCenter,
+                                child: Container(
+                                    margin: EdgeInsets.all(8.0),
+                                    padding: EdgeInsets.all(4.0),
+                                    decoration: BoxDecoration(
+                                        color: const Color(0xAE000000),
+                                        borderRadius: BorderRadius.all(Radius.circular(4.0))
+                                    ),
+                                    child: Text(
+                                        movie.name,
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold
+                                        ),
+                                    )
+                                ),
+                            )
+                        ],
                     )
                 )
             );
